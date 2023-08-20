@@ -6,7 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dto.EmpDTO;
 
-public interface Empbiz {
+public interface EmpBiz {
 
 	public List<EmpDTO> list();
+	public int write(EmpDTO dto);
 }

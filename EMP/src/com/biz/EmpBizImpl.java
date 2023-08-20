@@ -8,7 +8,7 @@ import com.config.MySqlSessionFactory;
 import com.dao.EmpDAO;
 import com.dto.EmpDTO;
 
-public class EmpBizImpl implements Empbiz {
+public class EmpBizImpl implements EmpBiz {
 
 	@Override
 	public List<EmpDTO> list() {
@@ -22,6 +22,20 @@ public class EmpBizImpl implements Empbiz {
 			session.close();
 		}
 		return list;
+	}
+
+	@Override
+	public int write(EmpDTO dto) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			EmpDAO dao = new EmpDAO();
+			n = dao.write(session, dto);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return n;
 	}
 
 }

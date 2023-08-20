@@ -10,5 +10,10 @@
 		from emp
 		order by empno desc
 	</select>
+	
+	<insert id="write" parameterType="EmpDTO">
+		insert into emp (empno, ename, job, hireDate, sal)
+		values (#{empno}, #{ename}, #{job}, #{hireDate}, #{sal})
+	</insert>
 </mapper>
 

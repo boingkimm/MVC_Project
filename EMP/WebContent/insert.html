@@ -14,33 +14,33 @@ emp 테이블에 누락된 컬럼은 모두 null 또는 0 저장한다.
 <table border="1">
   <tr>
     <th>사원번호</th>
-    <td><input type="text" value="1000" readonly>실습을 위해서 1000으로 고정</td>
+    <td><input type="text" name="empno" value="1000"></td>
   </tr>
   <tr>
     <th>사원이름</th>
-    <td><input type="text" name="ename"><span style="color: red">이름은 반드시 3자리로 지정해야 된다.공백안됨</td>
+    <td><input type="text" name="ename"><span style="color: red">이름은 반드시 3자리로 지정해야 된다.공백안됨</span></td>
   </tr>
 	<tr>
     <th>직업</th>
     <td>
-    	<select name="selectJob">
-    	<option value="clerk">CLERK</option>
-    	<option value="manager">MANAGER</option>
-    	<option value="analyst">ANALYST</option>
+    	<select name="job">
+    	<option value="CLERK">CLERK</option>
+    	<option value="MANAGER">MANAGER</option>
+    	<option value="ANALYST">ANALYST</option>
     	</select>
     </td>
 	</tr>
 	<tr>
     <th>관리자</th>
-		<td><input type="text" value="7962" readonly>실습을 위해서 7692으로 고정</td>
+		<td><input type="text" name="mgr" value="7962" readonly>실습을 위해서 7692으로 고정</td>
 	</tr>
 	<tr>
     <th>입사일</th>
-		<td><input type="text" id="sysdate" readonly>입사일은 현재 날짜로 저장한다.</td>
+		<td><input type="text" name="hireDate" id="sysdate" readonly>입사일은 현재 날짜로 저장한다.</td>
 	</tr>
 	<tr>
     <th>월급</th>
-		<td><input type="text" value="1500" readonly>실습을 위해서 1500으로 고정</td>
+		<td><input type="text" name="sal" value="1500" readonly>실습을 위해서 1500으로 고정</td>
 	</tr>
 	<tr>
     <th colspan="2">

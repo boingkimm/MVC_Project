@@ -18,7 +18,7 @@
 		<!-- 검색화면 -->
 		<tr>
 			<td colspan="5">
-				<form action="list">
+				<form action="list" method="post">
 					<select name="searchName">
 						<option value="hireDate">입사일(년도만)</option>
 						<option value="ename">이름</option>
@@ -38,7 +38,6 @@
 			</td>
 		</tr>
 		<!-- 정렬기준 끝 -->
-
 		<tr>
 			<th>사원번호</th>
 			<th>사원이름</th>
@@ -65,7 +64,7 @@
 			} //end for
 		%>
 	</table>
-	<a href="write">사원등록</a>
+	<a href="writeform">사원등록</a>
 
 </body>
 </html>

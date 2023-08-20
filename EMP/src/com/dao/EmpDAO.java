@@ -13,4 +13,10 @@ public class EmpDAO {
 		List<EmpDTO> list = session.selectList("EmpMapper.list");
 		return list;
 	}
+	
+	//사원 등록
+	public int write(SqlSession session, EmpDTO dto) {
+		int n  = session.selectOne("EmpMapper.write", dto);
+		return n;
+	}
 }
