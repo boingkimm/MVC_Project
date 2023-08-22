@@ -15,6 +15,12 @@
 		insert into member (userid, passwd, username, post, addr1, addr2, phone1, phone2, phone3, email1, email2)
 		values (#{userid}, #{passwd}, #{username}, #{post}, #{addr1}, #{addr2}, #{phone1}, #{phone2}, #{phone3}, #{email1}, #{email2})
 	</insert>
-
+	
+	<select id="login" parameterType="hashmap" resultType="MemberDTO">
+		select userid, passwd, username, post, addr1, addr2, phone1, phone2, phone3, email1, email2
+		from member
+		where userid=#{userid} and passwd=${passwd}
+	</select>
+	
 </mapper>
 
