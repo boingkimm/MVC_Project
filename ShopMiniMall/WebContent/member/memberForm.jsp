@@ -1,10 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- /member/memberform.jsp -->
-<form>
-*아이디: <input type="text" name="userid"><br>
-*비밀번호: <input type="text" name="passwd"><br>
-비밀번호확인: <input type="text" name="passwd2"><br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		//비밀번호 중복체크 jquery
+		$("#passwd2").on("keyup", function() {
+			var passwd = $("#passwd").val();
+			var passwd2 = $("#passwd2").val();
+			var mesg = "비번 일치";
+			if(passwd != passwd2){
+				mesg = "비번 불일치"
+			}
+			$("#passwdcheck").text(mesg);
+		}); //비번중복체크
+		
+		//id 중복체크 ajax
+		//중복확인(idDupulicatedcheck) 클릭시 ajax실행 
+		$("#idDupulicatedcheck").on("click", function() {
+			//submit 비활성 
+			event.preventDefault();
+			//ajax 연동
+      $.ajax({
+         type:"get",
+         url:"MemberIdCheckServlet",  //에 요청시 
+         data:{
+           userid:$("#userid").val()  //파라미터 같이 넘어감 (input id="userid")
+         },// 요청코드
+         dataType:'text',  //응답받을 데이터 타입 (문자열)
+         success:function(data, status, xhr){  //응답받은 문자열이 data에 저장됨
+           console.log(data);
+           $("#result").text(data);  //span id="result"에 data출력
+         },
+         error:function(xhr, status, error){
+              console.log("error 발생");
+         }// 응답코드
+      });
+		}); //id중복체크
+
+		//TODO 값 입력 안하면 가입 안되도록 구현하기
+	});
+</script>
+<form action="MemberAddServlet" method="post">
+*아이디: <input type="text" name="userid" id="userid">
+<button id="idDupulicatedcheck">중복확인</button><span id="result"></span><br>
+*비밀번호: <input type="text" name="passwd" id="passwd"><br>
+비밀번호확인: <input type="text" name="passwd2" id="passwd2"><span id="passwdcheck"></span><br>
 이름:<input type="text" name="username"><br>
 
 <!-- kakao address API - name추가 -->
