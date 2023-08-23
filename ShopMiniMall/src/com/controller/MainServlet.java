@@ -22,7 +22,7 @@ public class MainServlet extends HttpServlet {
 		String gCategory=request.getParameter("gCategory");
 		//맨 처음 요청시
 		if (gCategory==null) {
-			gCategory = "bottom";
+			gCategory = "top";
 		}
 		GoodsService service = new GoodsServiceImpl();
 		List<GoodsDTO> list = service.goodsList(gCategory);

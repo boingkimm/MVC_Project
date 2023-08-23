@@ -23,25 +23,22 @@
 
 <!--  for 시작 -->
 <!-- JSTL로 변경하기 -->
-
 <c:forEach var="dto" items="${goodsList}" varStatus="status">
 					<td>
 						<table style='padding: 15px'>
 							<tr>
-								<td><a href="GoodsRetrieveServlet?gCode=D1"> <img
-										src="images/items/${dto.gImage}.gif" border="0" align="center"
-										width="200">
+								<td>
+								<a href="GoodsRetrieveServlet?gCode=${dto.gCode}">
+								<img src="images/items/${dto.gImage}.gif" border="0" align="center" width="200">
 								</a></td>
 							</tr>
 							<tr>
-
 								<td height="10">
 							</tr>
 							<tr>
-								<td class="td_default" align="center"><a class="a_black"
-									href="GoodsRetrieveServlet?gCode=D1">${dto.gName}<br>
-								</a> <font color="gray"> -------------------- </font></td>
-
+								<td class="td_default" align="center">
+								<a class="a_black" href="GoodsRetrieveServlet?gCode=D1">${dto.gName}<br></a>
+								<font color="gray"> -------------------- </font></td>
 							</tr>
 							<tr>
 								<td height="10">
@@ -54,8 +51,9 @@
 								<td height="10">
 							</tr>
 							<tr>
-								<td class="td_red" align="center"><font color="red"><strong>
-											${dto.gPrice}</strong></font></td>
+								<td class="td_red" align="center">
+								<font color="red"><strong>${dto.gPrice}</strong></font>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -65,7 +63,7 @@
 							<td height="10">
 						</tr>
 					</c:if>
-						<!-- if 끝 -->
+					<!-- if 끝 -->
 </c:forEach>
 <!-- for 끝 -->
 			</table>

@@ -10,4 +10,11 @@
       from goods
       where gCategory = #{gCategory}
    </select>
+   
+  <select id="goodsRetrieve" parameterType="string" resultType="GoodsDTO">
+      select gCode, gCategory, gName, gContent, gPrice, gImage
+      from goods
+      where gCode = #{gCode}
+   </select>
+   
 </mapper>
