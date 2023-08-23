@@ -5,6 +5,7 @@
 <!-- goods/goodsRetrieve.jsp -->
 <script>
    $(document).ready(function(){
+	   //수량 선택 이벤트 처리
 	   //up
 	   $("#up").on("click", function() {
 		   var gAmount = Number.parseInt($("#gAmount").val());
@@ -21,15 +22,28 @@
 			 }
 	   });
 	   
+	   
+	   //장바구니 버튼 이벤트 처리
+	   $("#cartBtn").on("click", function() {
+		   // 배열로 반환
+				var f = $("#myForm")[0];
+				console.log(f);
+				//form태그의 action수정
+				f.action="CartAddServlet";
+				f.method="get";
+	   });
+	   
+	   //구매 버튼 이벤트 처리
+	   
    });
 </script>
 
 <!-- JSTL -->
-<form name="goodRetrieveForm" method="GET" action="#">
-	    <input type="hidden" name="gImage" value="outer2"> <input
-		type="hidden" name="gCode" value="O2"> <input
-		type="hidden" name="gName" value="히든 버튼 베이직 울코트"> <input
-		type="hidden" name="gPrice" value="52800">
+<form id="myForm" name="goodRetrieveForm" method="GET" action="#">
+	    <input type="hidden" name="gImage" value="${goodsRetrieve.gImage}">
+	    <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
+	    <input type="hidden" name="gName" value="${goodsRetrieve.gName}"> 
+	    <input type="hidden" name="gPrice" value="${goodsRetrieve.gPrice}">
 
 	<table width="100%" cellspacing="0" cellpadding="0">
 		<tr>
@@ -111,7 +125,8 @@
 		</tr>
 	</table>
 
-	<br> <button>구매</button>
+	<br>
+	<button id="buyBtn">구매</button>
 	&nbsp;&nbsp;
-	<button>장바구니</button>
+	<button id="cartBtn">장바구니</button>
 </form>

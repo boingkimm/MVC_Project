@@ -10,6 +10,7 @@
    <typeAliases>
       <typeAlias alias="MemberDTO" type="com.dto.MemberDTO"/>
       <typeAlias alias="GoodsDTO" type="com.dto.GoodsDTO"/>
+      <typeAlias alias="CartDTO" type="com.dto.CartDTO"/>
    </typeAliases>
   
   <environments default="development">
@@ -26,5 +27,6 @@
   <mappers>
     <mapper resource="com/config/MemberMapper.xml"/>
     <mapper resource="com/config/GoodsMapper.xml"/>
+    <mapper resource="com/config/CartMapper.xml"/>
   </mappers>
 </configuration>
