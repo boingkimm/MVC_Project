@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
+import com.dto.OrderDTO;
 
 public class OrderDAO {
 
@@ -13,5 +14,13 @@ public class OrderDAO {
 
 	public MemberDTO memberByUserid(SqlSession session, String userid) {
 		return session.selectOne("OrderMapper.memberByUserid", userid);
+	}
+	
+	public int orderDone(SqlSession session, OrderDTO dto) {
+		return session.insert("OrderMapper.orderDone", dto);
+	}
+	
+	public int cartDel(SqlSession session, int del_num) {
+		return session.delete("OrderMapper.cartDel", del_num);
 	}
 }
