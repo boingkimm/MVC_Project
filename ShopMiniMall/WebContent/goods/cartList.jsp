@@ -21,16 +21,23 @@
 	      },// 요청코드
 	      dataType:'text',
 	      success:function(data, status, xhr){
-	     	 //합계 변경
-	     	 var price = $("#gPrice"+num).text();
-//	     alert("<수정> 주문번호" + num + " 수량:" + gAmount + " 가격:" + price);
+					//합계 변경
+					var price = $("#gPrice"+num).text();
+					//alert("<수정> 주문번호" + num + " 수량:" + gAmount + " 가격:" + price);
 	      $("#sum"+num).text(Number.parseInt(price) * Number.parseInt(gAmount));
 	      },
 	      error:function(xhr, status, error){
 	           console.log("error 발생");
 	      }// 응답코드
 	   });
-		}); 
+		}); //end updateBtn
+		
+		//단일 삭제 버튼 이벤트
+		$(".deleteBtn").on("click", function() {
+			var num = $(this).attr("data-num");
+			//alert(num);
+			location.href="CartDeleteServlet?num="+num;
+		}); // end deleteBtn
 });
 </script>
 <table width="90%" cellspacing="0" cellpadding="0" border="0">
@@ -110,7 +117,7 @@
 				</span></td>
 			<td><input type="button" value="주문"></td>
 			<td class="td_default" align="center" width="30" style='padding-left: 10px'>
-				<input type="button" value="삭제"></td>
+				<input type="button" value="삭제" class="deleteBtn" data-num="${dto.num}"/></td>
 			<td height="10"></td>
 		</tr>
 	</c:forEach>

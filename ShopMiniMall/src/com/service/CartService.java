@@ -12,4 +12,5 @@ public interface CartService {
 	public int cartAdd(CartDTO dto);
 	public List<CartDTO> cartList(String userid);
 	public int cartUpdate(HashMap<String, Integer> map);
+	public int cartDelete(int num);
 }

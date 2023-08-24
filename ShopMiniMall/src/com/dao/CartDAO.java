@@ -24,4 +24,9 @@ public class CartDAO {
 	public int cartUpdate(SqlSession session, HashMap<String, Integer> map) {
 		return session.update("CartMapper.cartUpdate", map);
 	}
+	
+	//단일 삭제
+	public int cartDelete(SqlSession session, int num) {
+		return session.delete("CartMapper.cartDelete", num);
+	}
 }
