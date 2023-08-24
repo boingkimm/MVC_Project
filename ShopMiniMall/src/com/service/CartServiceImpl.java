@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dao.CartDAO;
 import com.dto.CartDTO;
+
+import sun.print.resources.serviceui;
 
 public class CartServiceImpl implements CartService {
 
@@ -37,6 +40,21 @@ public class CartServiceImpl implements CartService {
 			session.close();
 		}
 		return list;
+	}
+
+	@Override
+	public int cartUpdate(HashMap<String, Integer> map) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			//DAO연동코드
+			CartDAO dao = new CartDAO();
+			n = dao.cartUpdate(session, map);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return n;
 	}
 
 }

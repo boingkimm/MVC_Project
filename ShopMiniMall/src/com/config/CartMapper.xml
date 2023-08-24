@@ -17,5 +17,12 @@
 		from cart
  	  where userid =#{userid}
  	</select>
+ 	
+ 	<!-- 수량 수정 -->
+ 		<update id="cartUpdate" parameterType="hashmap">
+ 			update cart
+ 			set gAmount = ${gAmount}
+ 			where num = #{num}
+ 		</update>
 </mapper>
 
