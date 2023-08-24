@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
+		
 		//수정 버튼 이벤트
 		$(".updateBtn").on("click", function() {
 			var num = $(this).attr("data-num");  //주문번호로 수정버튼 식별  (data-num="${dto.num}")
@@ -38,6 +39,30 @@
 			//alert(num);
 			location.href="CartDeleteServlet?num="+num;
 		}); // end deleteBtn
+		
+		//전체 선택 이벤트
+		$("#allCheck").on("click", function() {
+			//allCheck의 체크 여부 확인
+			//alert(this.checked);
+			var allCheck = this.checked;   //allCheck의 checked여부(true/false)를
+			
+			//check해야 될 체크박스 얻기
+			//var chk = $(".check");
+      $(".check").each(function(idx,ele){  //개별 check에 반복하면서 적용
+				this.checked = allCheck;
+      });
+		}); // end allCheck
+		
+		//전체 삭제 버튼 이벤트
+		//form태그 밖의 버튼을 form태그 안의 submit버튼처럼 동작처리
+		$("#deleteAll").on("click", function(){
+			//form태그 가져오기
+			var f = $("form")[0];
+			f.action="CartDeleteAllServlet";
+			f.method="get";
+			f.submit(); //submit 처리
+		}); //end deleteAll
+		
 });
 </script>
 <table width="90%" cellspacing="0" cellpadding="0" border="0">
@@ -68,6 +93,7 @@
 	<tr>
 		<td class="td_default" align="center">
 		<input type="checkbox" name="allCheck" id="allCheck"> <strong>전체선택</strong></td>
+		
 		<td class="td_default" align="center"><strong>주문번호</strong></td>
 		<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
 		<td class="td_default" align="center"><strong>판매가</strong></td>
@@ -89,17 +115,13 @@
 	<form name="myForm">
 	 <c:forEach var="dto" items="${cartList}" varStatus="status">
 
-		 <input type="text" name="num81" value="81" id="num81">
-		 <input type="text" name="gImage81" value="bottom1" id="gImage81">
-		 <input type="text" name="gName81" value="제나 레이스 스커트" id="gName81">
-		 <input type="text" name="gSize81" value="L" id="gSize81">
-		 <input type="text" name="gColor81" value="navy" id="gColor81"> 
-		 <input type="text" name="gPrice81" value="9800" id="gPrice81">
 
 		<tr>
 			<td class="td_default" width="80">
+			
 			<!-- checkbox는 체크된 값만 서블릿으로 넘어간다. 따라서 value에 삭제할 num값을 설정한다. -->
-			<input type="checkbox" name="check" id="check81" class="check" value="81"></td>
+			<input type="checkbox" name="check" class="check" value="${dto.num}"></td>
+			
 			<td class="td_default" width="80">${dto.num}</td>
 			<td class="td_default" width="80"><img src="images/items/${dto.gImage}.gif" border="0" align="center"	width="80" /></td>
 			<td class="td_default" width="300" style='padding-left: 30px'>${dto.gName}
@@ -136,7 +158,7 @@
 	<tr>
 		<td align="center" colspan="5">
 			<a class="a_black" href=""> 전체 주문하기 </a>&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a class="a_black" href=""> 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="deleteAll"> 전체 삭제하기 </button> &nbsp;&nbsp;&nbsp;&nbsp;
 			<a class="a_black" href=""> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>

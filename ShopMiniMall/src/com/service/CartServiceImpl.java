@@ -73,4 +73,19 @@ public class CartServiceImpl implements CartService {
 
 	}
 
+	@Override
+	public int cartDeleteAll(List<String> num) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			//DAO연동코드
+			CartDAO dao = new CartDAO();
+			n = dao.cartDeleteAll(session, num);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return n;
+	}
+
 }

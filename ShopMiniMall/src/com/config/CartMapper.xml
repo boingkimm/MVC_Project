@@ -30,5 +30,17 @@
  			delete from cart
  			where num = #{num}
  		</delete>
+ 		
+	 	<!-- 다중 삭제 -->
+		<delete id="cartDeleteAll" parameterType="arraylist">
+			delete from cart
+			<where>
+				<foreach item="item" collection="list" 
+					open="num IN (" separator="," close=")">
+						#{item}
+				</foreach>
+			</where>
+		</delete>	
+ 		
 </mapper>
 
