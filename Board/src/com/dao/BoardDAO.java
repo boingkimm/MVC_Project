@@ -10,9 +10,12 @@ public class BoardDAO {
 
 	//전체목록
 	public List<BoardDTO> list(SqlSession session) {
-		List<BoardDTO> list = session.selectList("BoardMapper.list");
-		return list;
+		return session.selectList("BoardMapper.list");
 	}
 
+	//글 저장
+	public int write(SqlSession session, BoardDTO dto) {
+		return session.insert("BoardMapper.write", dto);
+	}
 	
 }
