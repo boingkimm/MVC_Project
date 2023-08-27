@@ -18,4 +18,13 @@ public class BoardDAO {
 		return session.insert("BoardMapper.write", dto);
 	}
 	
+	//글 자세히 보기
+	public BoardDTO retrieve(SqlSession session, int num) {
+		return session.selectOne("BoardMapper.retrieve", num);
+	}
+	
+	//조회수 증가
+	public int readcnt(SqlSession session, int num) {
+		return session.update("BoardMapper.readcnt", num);
+	}
 }
