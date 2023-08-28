@@ -27,4 +27,10 @@ public class BoardDAO {
 	public int readcnt(SqlSession session, int num) {
 		return session.update("BoardMapper.readcnt", num);
 	}
+	
+	//글 수정
+	public int update (SqlSession session, BoardDTO dto) {
+		int n = session.update("BoardMapper.update", dto);
+		return n;
+	}
 }

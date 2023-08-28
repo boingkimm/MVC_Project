@@ -18,7 +18,7 @@
 작성자: <input type="text" name="author" value="${boardRetrieve.author}"><br>
 내용: <br><textarea rows="10" cols="50" name="content">${boardRetrieve.content}</textarea><br>
 <input type="submit" value="수정">
-</form>
+</form>  
 <a href="list">목록</a>
 </body>
 </html>

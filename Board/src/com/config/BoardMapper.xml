@@ -28,4 +28,10 @@
 		where num =#{num}
 	</update>
 	
+	<update id="update" parameterType="BoardDTO">
+		update board
+		set title=#{title}, author=#{author}, content=#{content}
+		where num =#{num}
+	</update>
+	
 </mapper>
