@@ -73,5 +73,20 @@ public class BoardServiceImpl implements BoardService {
 		return n;
 	}
 
+	@Override
+	public int delete(int num) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			// DAO 연동
+			BoardDAO dao = new BoardDAO();
+			n = dao.delete(session, num);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
 }
 

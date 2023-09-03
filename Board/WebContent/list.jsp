@@ -8,6 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>목록보기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	//button이벤트 추가
+	$("button").on("click", function() {
+		var num = $(this).attr("data-num")
+		//alert("button"+num);
+		location.href="delete?num="+num;
+	});
+});
+</script>
 </head>
 <body>
 <h2>게시판 목록보기</h2>
