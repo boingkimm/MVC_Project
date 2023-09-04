@@ -48,7 +48,7 @@ $(document).ready(function(){
     <th>조회수</th>
     <th>삭제</th>
   </tr>
-<c:forEach var="dto" items="${boardList}">
+<c:forEach var="dto" items="${pageDTO.list}">
   <tr>
     <td>${dto.num}</td>
     <td><a href="retrieve?num=${dto.num}">${dto.title}</a></td>
@@ -58,6 +58,31 @@ $(document).ready(function(){
     <td><button data-num="${dto.num}">삭제</button></td>
   </tr>
 </c:forEach>
+
+<!-- 페이지 번호 출력 -->
+<c:set var="perPage" value="${pageDTO.perPage}"/>
+<c:set var="curPage" value="${pageDTO.curPage}"/>
+<c:set var="totalCount" value="${pageDTO.totalCount}"/>
+<c:set var="totalNum" value="${totalCount/perPage}"/>
+<c:if test="${totalCount%perPage != 0}">
+	<c:set var="totalNum" value="${totalNum+1}"/>
+</c:if>
+<c:set var="searchName" value="${pageDTO.searchName}"/>
+<c:set var="searchValue" value="${pageDTO.searchValue}"/>
+
+	<tr>
+		<td colspan="6" style="text-align: center">
+			<c:forEach var="i" begin="1" end="${totalNum}">
+			  <c:if test="${curPage == i}">
+			  		>${i}
+			  </c:if>
+			  <c:if test="${curPage != i}">
+						<a href="<c:url value='/list?curPage=${i}&searchName=${searchName}&searchValue=${searchValue}'/> ">${i}</a>
+			  </c:if>
+			</c:forEach>
+		</td>
+	</tr>
+<!-- 페이지 번호 출력 끝-->
 </table>
 <a href="writeui">글쓰기</a>
 </body>
